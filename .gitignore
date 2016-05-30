@@ -1,0 +1,9 @@
+.idea
+
+vendor
+
+storage
+
+composer.lock
+
+config/*.ini

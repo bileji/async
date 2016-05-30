@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+/**
+ * this source file is gearman
+ *
+ * author: shuc <shuc324@gmail.com>
+ * time:   2016-05-29 23-48
+ */
+require_once("./bootstrap/autoload.php");
+
+use Worker\Worker;
+use GearmanManager\Bridge\GearmanPeclManager;
+
+$worker = new Worker();
+$log = [];
+var_dump($worker->run('kkkk', $log));
+
+#declare(ticks = 1);
+#new GearmanPeclManager();

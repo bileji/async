@@ -1,0 +1,27 @@
+{
+  "name": "bileji/worker",
+  "description": "async worker...",
+  "keywords": [
+    "worker",
+    "gearman"
+  ],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "php": ">=5.5.9",
+    "brianlmoon/gearmanmanager": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Worker\\": "worker/"
+    }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/"
+    ]
+  }
+}
