@@ -6,5 +6,3 @@
  * time:   2016-05-30 00-55
  */
 $loader = require_once(__DIR__.'/../vendor/autoload.php');
-
-$loader->setPsr4('GearmanManager\\', array(__DIR__.'/../vendor/brianlmoon/gearmanmanager/src/GearmanManager'));

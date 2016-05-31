@@ -8,6 +8,4 @@
  */
 require_once("./bootstrap/autoload.php");
 
-declare(ticks = 1);
-
-new GearmanManager\Bridge\GearmanPeclManager();
+(new App\Application())->run();
