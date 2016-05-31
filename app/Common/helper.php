@@ -6,6 +6,8 @@
  * time:   2016-05-31 15-08
  */
 
+use App\Utils\Logger;
+
 if (!function_exists('value')) {
     /**
      * Return the default value of the given value.
@@ -51,5 +53,13 @@ if (!function_exists('env')) {
         }
 
         return strpos($value, '"') === 0 && '"' === substr($value, -strlen('"')) ? substr($value, 1, -1) : $value;
+    }
+}
+
+if (!function_exists('gearman_error_handler')) {
+    function gearman_error_handler($err_no, $err_str, $err_file, $err_line)
+    {
+        $logger = Logger::withName('system');
+        $logger->error("code($err_no) $err_file + $err_line: $err_str");
     }
 }

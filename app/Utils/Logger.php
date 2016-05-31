@@ -20,7 +20,7 @@ class Logger
     {
         $logger = new MongoLog($channel);
         $stream = new RotatingFileHandler($filename, 0, MongoLog::DEBUG);
-        $stream->setFormatter(new LineFormatter("%datetime% %level_name% %message% %context%\n", "Y-m-d H:i:s"));
+        $stream->setFormatter(new LineFormatter("%datetime% [%channel%] %level_name% %message% %context%\n", "Y-m-d H:i:s"));
         $logger->pushHandler($stream);
         static::$object = $logger;
     }

@@ -15,13 +15,15 @@ trait Schedule
 {
     public function run(GearmanJob $job, &$log)
     {
+        set_error_handler('gearman_error_handler');
+
         $workload = json_decode($job->workload(), true);
 
         try {
             $workload['method'] = empty($workload['method']) ? 'progress' : $workload['method'];
             Logger::info(__CLASS__ . '->' . $workload['method'] . ' got workload.', $workload);
-            $result = call_user_func_array([$this, $workload['method']], [$workload, $log]);
-            Logger::info('result of the ' . __CLASS__ . '->' . $workload['method'] . '.', $result);
+            !($call_result = call_user_func_array([$this, $workload['method']], [$workload, $log])) && $call_result = [];
+            Logger::info('result of the ' . __CLASS__ . '->' . $workload['method'] . '.', $call_result);
         } catch (Exception $e) {
             Logger::emerg('class ' . __CLASS__ . ' throw exception:' . $e->getMessage(), $workload);
         }
