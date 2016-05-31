@@ -1,17 +1,17 @@
 <?php
 /**
- * this source file is Worker.php
+ * this source file is Schedule.php
  *
  * author: shuc <shuc324@gmail.com>
- * time:   2016-05-29 23-19
+ * time:   2016-05-31 17-51
  */
-namespace Worker;
+namespace App\Traits;
 
-use App\Utils\Logger;
-use Exception;
 use GearmanJob;
+use Exception;
+use App\Utils\Logger;
 
-class Worker
+trait Schedule
 {
     public function run(GearmanJob $job, &$log)
     {
