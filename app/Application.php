@@ -7,7 +7,8 @@
  */
 namespace App;
 
-use App\Utils\Logger;
+use Dotenv\Dotenv;
+use Exception;
 use GearmanPeclManager;
 use Noodlehaus\Config;
 use Noodlehaus\AbstractConfig;
@@ -27,6 +28,11 @@ class Application
 
     public function __construct()
     {
+        try {
+            (new Dotenv('./app'))->load();
+        } catch (Exception $e) {
+
+        }
         AppConfig::init($this->configure());
     }
 
