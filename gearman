@@ -8,12 +8,6 @@
  */
 require_once("./bootstrap/autoload.php");
 
-use Worker\Worker;
-use GearmanManager\Bridge\GearmanPeclManager;
+declare(ticks = 1);
 
-$worker = new Worker();
-$log = [];
-var_dump($worker->run('kkkk', $log));
-
-#declare(ticks = 1);
-#new GearmanPeclManager();
+new GearmanManager\Bridge\GearmanPeclManager();
