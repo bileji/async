@@ -2,6 +2,7 @@
     "name" : "bileji/worker",
     "description" : "async worker...",
     "keywords" : [
+        "php",
         "worker",
         "gearman"
     ],
