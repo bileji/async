@@ -23,7 +23,8 @@ trait Schedule
         try {
             $workload['method'] = empty($workload['method']) ? 'progress' : $workload['method'];
             Logger::info(__CLASS__ . '->' . $workload['method'] . ' got workload.', $workload);
-            !($call_result = call_user_func_array([$this, $workload['method']], [$workload['payload'], $log])) && $call_result = [];
+            array_push($workload['payload'], $log);
+            !($call_result = call_user_func_array([$this, $workload['method']], $workload['payload'])) && $call_result = [];
             Logger::info('result of the ' . __CLASS__ . '->' . $workload['method'] . '.', $call_result);
         } catch (Exception $e) {
             Logger::emerg('class ' . __CLASS__ . ' throw exception:' . $e->getMessage(), $workload);
