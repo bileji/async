@@ -14,8 +14,13 @@ class SmsWorker
 {
     use Schedule;
 
+    public function __construct()
+    {
+        $this->sms = (new Sms(Config::get('sms')))->get();
+    }
+
     public function send($mobile, $message)
     {
-        return (new Sms(Config::get('sms')))->send($mobile, $message);
+        return $this->sms->send($mobile, $message);
     }
 }
