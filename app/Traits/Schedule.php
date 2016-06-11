@@ -30,6 +30,6 @@ trait Schedule
             Logger::emerg('class ' . __CLASS__ . ' throw exception:' . $e->getMessage(), $workload);
         }
 
-        return $call_result;
+        return empty($call_result) ? GEARMAN_WORK_FAIL : GEARMAN_SUCCESS;
     }
 }
