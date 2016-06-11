@@ -21,6 +21,8 @@ class SmsWorker
 
     public function send($mobile, $message)
     {
-        return $this->sms->send($mobile, $message);
+        $this->sms->send($mobile, $message);
+
+        return ['code' => $this->sms->code, 'message' => $this->sms->content];
     }
 }
