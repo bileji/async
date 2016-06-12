@@ -2,8 +2,6 @@
 
 vendor
 
-storage
-
 composer.lock
 
 test.php
