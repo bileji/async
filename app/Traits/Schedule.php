@@ -17,7 +17,6 @@ trait Schedule
     {
         set_error_handler('gearman_error_handler');
 
-        $call_result = false;
         $workload = json_decode($job->workload(), true);
 
         try {
@@ -30,6 +29,6 @@ trait Schedule
             Logger::emerg('class ' . __CLASS__ . ' throw exception:' . $e->getMessage(), $workload);
         }
 
-        return empty($call_result) ? GEARMAN_WORK_FAIL : GEARMAN_SUCCESS;
+        return GEARMAN_SUCCESS;
     }
 }
