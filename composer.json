@@ -14,7 +14,8 @@
         "monolog/monolog" : "^1.19",
         "brianlmoon/gearmanmanager" : "^1.0",
         "hassankhan/config" : "^0.10.0",
-        "bileji/support": "^1.0"
+        "bileji/support": "^1.0",
+        "phpmailer/phpmailer": "^5.2"
     },
     "require-dev" : {
         "phpunit/phpunit" : "~4.0"
