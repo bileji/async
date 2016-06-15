@@ -21,16 +21,16 @@ class MessageWorker
         $this->mail = $this->getEmail();
     }
 
-    public function send($account, $message)
+    public function send($account, $message, $title = '')
     {
         if (preg_match('/^1[3|4|5|7|8]\d{9}$/', $account)) {
             return $this->sendSms($account, $message);
         }
 
         if (preg_match('/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/', $account)) {
-            return $this->sendEmail($account, $message);
+            return $this->sendEmail($account, $message, $title);
         }
 
-        return ['code' => -1, 'message' => '账号既不是手机号又不是邮箱'];
+        return ['code' => -1, 'message' => 'neither account is not a phone number and e-mail'];
     }
 }

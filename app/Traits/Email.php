@@ -41,11 +41,11 @@ trait Email
         $this->email->Body = $this->formatBody($message);
         $this->email->AltBody = empty($alt_body) ? '此信为系统邮件，请不要直接回复。' : $alt_body;
 
-        return $this->email->send() ? ['code' => 0, 'message' => '邮件发送成功'] : ['code' => -1, 'message' => $this->email->ErrorInfo];
+        return $this->email->send() ? ['code' => 0, 'message' => 'sent e-mail success'] : ['code' => -1, 'message' => $this->email->ErrorInfo];
     }
 
     protected function formatBody($body)
     {
-        return "尊敬的用户，您好:<br/>    " . $body . "<br/><br/>此信为系统邮件，请不要直接回复。";
+        return "尊敬的用户，您好:<br/>&nbsp;&nbsp;&nbsp;&nbsp;" . $body . "<br/><br/>此信为系统邮件，请不要直接回复。";
     }
 }
