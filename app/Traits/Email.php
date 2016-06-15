@@ -27,6 +27,7 @@ trait Email
         $this->email->SMTPSecure = Config::get('email.smtp.secure');
         $this->email->Port = Config::get('email.smtp.port');
 
+        $this->email->isHTML(true);
         $this->email->setFrom(Config::get('email.username'), '比乐集');
 
         return $this->email;
@@ -45,6 +46,6 @@ trait Email
 
     protected function formatBody($body)
     {
-        return "尊敬的用户，您好:\r\n\t" . $body . "\r\n\r\n此信为系统邮件，请不要直接回复。";
+        return "尊敬的用户，您好:<br/>    " . $body . "<br/><br/>此信为系统邮件，请不要直接回复。";
     }
 }
