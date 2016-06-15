@@ -46,6 +46,6 @@ trait Email
 
     protected function formatBody($body)
     {
-        return "尊敬的用户，您好:<br/>&nbsp;&nbsp;&nbsp;&nbsp;" . $body . "<br/><br/>此信为系统邮件，请不要直接回复。";
+        return "尊敬的用户:<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;" . str_replace('【比乐集】您好，', '', $body) . "<br/><br/>此信为系统邮件，请不要直接回复。";
     }
 }
