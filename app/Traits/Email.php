@@ -32,14 +32,19 @@ trait Email
         return $this->email;
     }
 
-    protected function sendEmail($account, $message)
+    protected function sendEmail($account, $message, $title = '', $alt_body = '')
     {
         $this->email->addAddress($account, 'customer');
 
-        $this->email->Subject = $message;
-        $this->email->Body = $message;
-        $this->email->AltBody = '此信为系统邮件，请不要直接回复。';
+        $this->email->Subject = empty($title) ? $message : $title;
+        $this->email->Body = $this->formatBody($message);
+        $this->email->AltBody = empty($alt_body) ? '此信为系统邮件，请不要直接回复。' : $alt_body;
 
         return $this->email->send() ? ['code' => 0, 'message' => '邮件发送成功'] : ['code' => -1, 'message' => $this->email->ErrorInfo];
+    }
+
+    protected function formatBody($body)
+    {
+        return "尊敬的用户，您好:\r\n\t" . $body . "\r\n\r\n此信为系统邮件，请不要直接回复。";
     }
 }
