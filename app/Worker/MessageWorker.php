@@ -18,7 +18,7 @@ class MessageWorker
     {
         $this->sms = $this->getSms();
 
-        $this->mail = $this->getEmail();
+        $this->email = $this->getEmail();
     }
 
     public function send($account, $message, $title = '')
