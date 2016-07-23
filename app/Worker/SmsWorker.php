@@ -12,6 +12,8 @@ use Bileji\Support\Sms\Factory as Sms;
 
 class SmsWorker
 {
+    protected $sms;
+    
     use Schedule;
 
     public function __construct()
